@@ -1,0 +1,22 @@
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+  resources:
+    chain:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog
+    username: blog
+    password: blog
+    test-while-idle: true
+    validation-query: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+server:
+  port: 8080
