@@ -11,11 +11,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter{
 
-    @Override
-    public void addInterceptors(InterceptorRegistry interceptorRegistry){
-        interceptorRegistry
-                .addInterceptor(new AdminInterceptor())
-                .addPathPatterns("/admin");
-
-    }
+//    @Override
+//    public void addInterceptors(InterceptorRegistry interceptorRegistry){
+//        interceptorRegistry
+//                .addInterceptor(new AdminInterceptor())
+//                .addPathPatterns("/admin");
+//
+//    }
 }

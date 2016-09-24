@@ -1,10 +1,8 @@
 package com.jaxlying.www.model;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * Created by jaxlying on 2016/9/24.
@@ -21,16 +19,7 @@ public class User  {
     private String password;
     private String email;
 
-    @OneToMany(mappedBy = "user",cascade={CascadeType.PERSIST})
-    private List<Article> articleList;
-
-    public void addArticle(Article article){
-        if(article!=null)
-            articleList.add(article);
-    }
-
     public User(){
-        articleList = new ArrayList<>();
     }
 
     public int getId() {
@@ -65,11 +54,4 @@ public class User  {
         this.email = email;
     }
 
-    public List<Article> getArticleList() {
-        return articleList;
-    }
-
-    public void setArticleList(List<Article> articleList) {
-        this.articleList = articleList;
-    }
 }

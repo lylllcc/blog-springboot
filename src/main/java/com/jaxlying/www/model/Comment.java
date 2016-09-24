@@ -17,14 +17,31 @@ public class Comment {
     private String email;
     private String nickname;
 
-    private int create_at;
-    private int updata_at;
-    private int delete_at;
+    private long createAt;
+    private long updataAt;
+    private long deleteAt = 0;
 
     @ManyToOne
     @JoinColumn(name = "article_id")
     private Article article;
 
+    /**
+     *
+     * @param body
+     * @param email
+     * @param nickname
+     * @param createAt
+     * @param updataAt
+     * @param article
+     */
+    public Comment(String body, String email, String nickname, long createAt, long updataAt, Article article) {
+        this.body = body;
+        this.email = email;
+        this.nickname = nickname;
+        this.createAt = createAt;
+        this.updataAt = updataAt;
+        this.article = article;
+    }
 
     public int getId() {
         return id;
@@ -58,28 +75,28 @@ public class Comment {
         this.nickname = nickname;
     }
 
-    public int getCreate_at() {
-        return create_at;
+    public long getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(int create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(int createAt) {
+        this.createAt = createAt;
     }
 
-    public int getUpdata_at() {
-        return updata_at;
+    public long getUpdataAt() {
+        return updataAt;
     }
 
-    public void setUpdata_at(int updata_at) {
-        this.updata_at = updata_at;
+    public void setUpdataAt(int updataAt) {
+        this.updataAt = updataAt;
     }
 
-    public int getDelete_at() {
-        return delete_at;
+    public long getDeleteAt() {
+        return deleteAt;
     }
 
-    public void setDelete_at(int delete_at) {
-        this.delete_at = delete_at;
+    public void setDeleteAt(int deleteAt) {
+        this.deleteAt = deleteAt;
     }
 
     public Article getArticle() {
