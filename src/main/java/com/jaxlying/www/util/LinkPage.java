@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class LinkPage<T> {
 
-    public static final int MAX_PAGE_ITEM_DISPLAY = 3;
+    public static final int MAX_PAGE_ITEM_DISPLAY = 5;
 
     @Autowired
     private PageItem pageItem;

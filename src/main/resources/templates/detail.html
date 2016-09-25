@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="head">
+</head>
+<body>
+
+
+    <!--nav-->
+    <div th:replace="nav"></div>
+
+
+
+
+    <div class="article">
+        <h1 class="text-center" th:text="${article.title}">asd</h1>
+        <h4 class="text-justify" th:text="${article.body}"></h4>
+    </div>
+
+
+    <div class="comment">
+
+        <form action="" method="post">
+
+            <div class="form-group">
+                <label class="sr-only">Password</label>
+                <input th:value="${article.id}" id="articleid" class="sr-only form-control" type="text" name="articleid" placeholder="articleid">
+            </div>
+
+            <div class="form-group">
+                <label>nickname</label>
+                <input class="form-control" type="text" id="nickname" name="nickname" placeholder="nickname">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="text" id="email" name="email" placeholder="email">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="text" id="body" name="body" placeholder="内容">
+            </div>
+
+
+
+            <button id="comment" class="btn btn-primary form-control" type="button"> 提交</button>
+
+        </form>
+
+
+
+        <ul th:each="comment:${comments}">
+            <li th:text="${comment.body}">23</li>
+            <li th:text="${comment.createAt}">23</li>
+            <li th:text="${comment.nickname}">23</li>
+            <li th:text="${comment.email}">23</li>
+        </ul>
+    </div>
+
+
+
+    <div th:replace="footer"></div>
+
+
+    <script src="/scripts/article.js"></script>
+</body>
+</html>

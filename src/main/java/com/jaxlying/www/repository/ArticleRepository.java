@@ -11,5 +11,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * Created by jaxlying on 2016/9/24.
  */
 public interface ArticleRepository extends PagingAndSortingRepository<Article,Integer> {
-    Page<Article> findByDeleteAt(long deleteAt, Pageable pageable);
+    Page<Article> findByDeleteAtOrderByIdDesc(long deleteAt, Pageable pageable);
 }

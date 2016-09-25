@@ -43,6 +43,8 @@ public class Comment {
         this.article = article;
     }
 
+    public Comment(){}
+
     public int getId() {
         return id;
     }

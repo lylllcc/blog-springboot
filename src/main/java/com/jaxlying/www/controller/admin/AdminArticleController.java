@@ -12,14 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by jaxlying on 2016/9/24.
  */
 @Controller
 @RequestMapping("/admin")
-public class ArticleController {
+public class AdminArticleController {
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -27,9 +26,9 @@ public class ArticleController {
     @RequestMapping(value = "/articles",method = RequestMethod.GET)
     public String getArticles(Model model,
                               @RequestParam(value = "page", defaultValue = "0") Integer page,
-                              @RequestParam(value = "size", defaultValue = "15") Integer size){
+                              @RequestParam(value = "size", defaultValue = "8") Integer size){
         Pageable pageable = new PageRequest(page,size);
-        Page<Article> pages = articleRepository.findByDeleteAt(0,pageable);
+        Page<Article> pages = articleRepository.findByDeleteAtOrderByIdDesc(0,pageable);
         model.addAttribute("page", new LinkPage<>(pages,"/admin/articles"));
         return "admin/home";
     }

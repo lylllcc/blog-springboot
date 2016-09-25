@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -32,9 +33,12 @@ public class Seeder {
     public void seeder(){
         for (int i = 0;i<10;i++){
             User user = new User();
+            BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+            user.setPassword(bCryptPasswordEncoder.encode("admin"));
             userRepository.save(user);
             long time = System.currentTimeMillis();
-            Article article = new Article("til","body",time,time,user);
+            String body = "这是一段好长好dy这是一段好长好长的body这是一段好长好dy这是一段好长好长的body这是一段好长好dy这是一段好长好长的body这是一段好长好dy这是一段好长好长的好长好dy这是一段好长好长的好长好dy这是一段好长好长的好长好dy这是一段好长好长的好长好dy这是一段好长好长的body";
+            Article article = new Article("til",body,time,time,user);
             Article article1 = new Article("til","body",time,time,user);
             articleRepository.save(article);
             articleRepository.save(article1);
@@ -49,4 +53,5 @@ public class Seeder {
         }
 
     }
+
 }

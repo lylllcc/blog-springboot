@@ -1,0 +1,12 @@
+ul li{
+    list-style-type: none;
+}
+a:hover{
+    color: black;
+}
+a{
+    color: black;
+}
+a:visited{
+    color: cornflowerblue;
+}
