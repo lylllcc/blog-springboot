@@ -9,5 +9,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface CommentRepository extends PagingAndSortingRepository<Comment,Integer>{
 
-    Iterable<Comment> findByArticleAndDeleteAtOrderById(Article article,long deletAt);
+    Iterable<Comment> findByArticleAndDeleteAtOrderByIdDesc(Article article,long deletAt);
+
 }

@@ -32,12 +32,12 @@
             </div>
 
             <div class="form-group">
-                <label>Password</label>
+                <label>email</label>
                 <input class="form-control" type="text" id="email" name="email" placeholder="email">
             </div>
 
             <div class="form-group">
-                <label>Password</label>
+                <label>内容</label>
                 <input class="form-control" type="text" id="body" name="body" placeholder="内容">
             </div>
 
@@ -47,14 +47,16 @@
 
         </form>
 
+        <ul class="list-group" th:each="comment:${comments}">
+            <li class="list-group-item" th:text="${comment.nickname}">23</li>
+            <li class="list-group-item" th:text="${comment.email}">23</li>
+            <li class="list-group-item" th:text="${comment.body}"></li>
+            <li class="text-right list-group-item" th:text="${#dates.format(comment.createAt,'yyyy/MM/dd HH:mm')}">发布时间</li>
 
 
-        <ul th:each="comment:${comments}">
-            <li th:text="${comment.body}">23</li>
-            <li th:text="${comment.createAt}">23</li>
-            <li th:text="${comment.nickname}">23</li>
-            <li th:text="${comment.email}">23</li>
         </ul>
+
+
     </div>
 
 

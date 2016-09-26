@@ -26,7 +26,6 @@ public class Comment {
     private Article article;
 
     /**
-     *
      * @param body
      * @param email
      * @param nickname
@@ -43,7 +42,18 @@ public class Comment {
         this.article = article;
     }
 
-    public Comment(){}
+    public Comment(Article article,  String nickname,String email, String body) {
+        this.body = body;
+        this.email = email;
+        this.nickname = nickname;
+        this.createAt = System.currentTimeMillis();
+        this.updataAt = System.currentTimeMillis();
+        this.article = article;
+    }
+
+
+    public Comment() {
+    }
 
     public int getId() {
         return id;

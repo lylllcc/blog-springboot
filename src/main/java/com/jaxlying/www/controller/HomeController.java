@@ -27,15 +27,6 @@ public class HomeController {
         return "redirect:/articles/";
     }
 
-    @RequestMapping(value = "/articles",method = RequestMethod.GET)
-    public String index(Model model,
-                              @RequestParam(value = "page", defaultValue = "0") Integer page,
-                              @RequestParam(value = "size", defaultValue = "8") Integer size){
-        Pageable pageable = new PageRequest(page,size);
-        Page<Article> pages = articleRepository.findByDeleteAtOrderByIdDesc(0,pageable);
-        model.addAttribute("page", new LinkPage<>(pages,"/articles"));
-        return "home";
-    }
 
 
 }
