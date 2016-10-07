@@ -24,12 +24,12 @@ public class CommentController {
     private ArticleRepository articleRepository;
 
     @RequestMapping(value = "",method = RequestMethod.POST)
-    @ResponseBody
-    public void store(int articleid,String nickname,String email,String body){
+    public String store(int articleid,String nickname,String email,String body){
         Article article = articleRepository.findOne(articleid);
         Comment comment = new Comment(article,nickname,email,body);
         commentRepository.save(comment);
         System.out.println("评论成功！");
+        return "redirect:/articles/" + articleid;
     }
 
 }
