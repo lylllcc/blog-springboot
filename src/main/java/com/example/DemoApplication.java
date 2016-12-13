@@ -1,12 +1,12 @@
-package com.jaxlying.www;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BlogSpringbootApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BlogSpringbootApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 }
