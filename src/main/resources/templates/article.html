@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>admin</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+
+<div style="padding: 50px;">
+
+    <h4>
+        <a href="/"><< 返回首页</a>
+    </h4>
+
+    <h1 style="text-align: center; margin-top: 50px;" th:text="${article.title}">标题</h1>
+    <hr>
+    <div id="content" style="margin: 20px;">
+        <p th:text="${article.body}">文章
+        </p>
+    </div>
+
+    <div id="comments" style="margin-top: 50px;">
+
+
+        <div id="new">
+            <form action="/comment" method="POST">
+
+                <input type="hidden" name="id" th:value="${article.id}">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" style="width: 300px;" required="required">
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" name="email" class="form-control" style="width: 300px;">
+                </div>
+
+                <div class="form-group">
+                    <label>Body</label>
+                    <textarea name="body" id="newFormContent" class="form-control" rows="10" required="required"></textarea>
+                </div>
+                <button type="submit" class="btn btn-lg btn-success col-lg-12">Submit</button>
+            </form>
+        </div>
+
+        <script>
+            function reply(a) {
+                var username = a.parentNode.parentNode.firstChild.nextSibling.getAttribute('data');
+                var textArea = document.getElementById('newFormContent');
+                textArea.innerHTML = '@'+username+' ';
+            }
+        </script>
+
+        <table>
+            <thead>
+
+            </thead>
+            <tbody>
+                <tr th:each="comment:${comments}">
+
+                    <div class="conmments" style="margin-top: 100px;">
+
+                        <div class="one" style="border-top: solid 20px #efefef; padding: 5px 20px;">
+                            <div class="nickname" data="{{ $comment->nickname }}" th:data="${comment.username}">
+                                <h3 th:text="${comment.username}">昵称</h3>
+                            </div>
+                            <div class="content">
+                                <p style="padding: 20px;" th:text="${comment.body}">
+                                    内容
+                                </p>
+                            </div>
+                            <div class="reply" style="text-align: right; padding: 5px;">
+                                <a href="#new" onclick="reply(this);">回复</a>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+</div>
+
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>
